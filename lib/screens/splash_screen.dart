@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:next_stop/main.dart';
-// import 'package:next_stop/screens/sign_up.dart';
+// import 'package:next_stop/main.dart';
+import 'package:next_stop/screens/sign_up.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       //*  context is a handle to the location of the widget in the widget tree
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => MainScreen()));
+          MaterialPageRoute(builder: (context) => const SignUpScreen()));
     });
   }
 
