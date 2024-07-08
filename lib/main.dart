@@ -9,12 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const SplashScreen(),
-      routes: {
-        '/signUp': (context) => SignUpScreen(),
-      },
-      theme: AppTheme.darkThemeMode,
-    );
+        home: const SplashScreen(),
+        routes: {
+          '/signUp': (context) => SignUpScreen(),
+        },
+        theme: AppTheme.darkThemeMode);
   }
 }
 
