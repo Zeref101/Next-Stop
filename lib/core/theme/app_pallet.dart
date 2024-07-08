@@ -11,4 +11,5 @@ class Pallet {
   static const Color onTertiaryColor = Color(0xFF003735);
   static const Color error = Color(0xFFffb4ab);
   static const Color onError = Color(0xFF690005);
+  static const Color onHoldButtonColor = Color(0xFF8baa66);
 }
