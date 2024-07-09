@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:next_stop/core/theme.dart';
+import 'package:next_stop/screens/sign_in.dart';
 import 'package:next_stop/screens/sign_up.dart';
 import 'package:next_stop/screens/splash_screen.dart';
 
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen(),
         routes: {
           '/signUp': (context) => SignUpScreen(),
+          '/signIn': (context) => SignInScreen(),
         },
         theme: AppTheme.darkThemeMode);
   }
