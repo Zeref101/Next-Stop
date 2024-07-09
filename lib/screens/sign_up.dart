@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:next_stop/core/theme/app_pallet.dart';
+import 'package:next_stop/screens/sign_in.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -41,7 +42,7 @@ class _SignUpScreen extends State<SignUpScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(top: 48.0, left: 16.0, right: 16.0),
             child: SizedBox(
               width: double.infinity,
               child: Column(
@@ -52,8 +53,12 @@ class _SignUpScreen extends State<SignUpScreen> {
                     controller: _usernameController,
                     decoration: InputDecoration(
                         labelText: 'Username',
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 8.0),
                         labelStyle: const TextStyle(
-                            color: Pallet.primaryColor, fontFamily: 'Poppins'),
+                            color: Pallet.primaryColor,
+                            fontFamily: 'Poppins',
+                            fontSize: 14.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -67,8 +72,12 @@ class _SignUpScreen extends State<SignUpScreen> {
                     controller: _emailController,
                     decoration: InputDecoration(
                         labelText: 'Email',
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 8.0),
                         labelStyle: const TextStyle(
-                            color: Pallet.primaryColor, fontFamily: 'Poppins'),
+                            color: Pallet.primaryColor,
+                            fontFamily: 'Poppins',
+                            fontSize: 14.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -83,8 +92,12 @@ class _SignUpScreen extends State<SignUpScreen> {
                     controller: _passwordController,
                     decoration: InputDecoration(
                         labelText: 'Password',
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 8.0),
                         labelStyle: const TextStyle(
-                            color: Pallet.primaryColor, fontFamily: 'Poppins'),
+                            color: Pallet.primaryColor,
+                            fontFamily: 'Poppins',
+                            fontSize: 14.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -119,7 +132,82 @@ class _SignUpScreen extends State<SignUpScreen> {
                 ],
               ),
             ),
-          )
+          ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 16.0, right: 16.0, bottom: 54.0),
+                child: SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: InkWell(
+                      onLongPress: () {
+                        // print("Long Pressed");
+                      },
+                      child: Material(
+                        type: MaterialType
+                            .transparency, // makes the button transparent
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            // print("Google");
+                          },
+                          icon: Image.asset(
+                            'assets/images/Google.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                          label: const Text(
+                            "Sign Up with Google",
+                            style:
+                                TextStyle(fontSize: 14, fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                    )),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Already have an account?"),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            SignInScreen(), // Replace SignUpScreen with the actual class of your sign-up screen
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          var begin = Offset(1.0,
+                              0.0); // Change begin offset for different animations
+                          var end = Offset.zero;
+                          var curve = Curves.ease;
+
+                          var tween = Tween(begin: begin, end: end)
+                              .chain(CurveTween(curve: curve));
+                          var offsetAnimation = animation.drive(tween);
+
+                          return SlideTransition(
+                            position: offsetAnimation,
+                            child: child,
+                          );
+                        },
+                      ));
+                    },
+                    child: Text(
+                      "Sign In",
+                      style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ],
       ),
     ));
