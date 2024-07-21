@@ -54,7 +54,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                     decoration: InputDecoration(
                         labelText: 'Username',
                         contentPadding: EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 8.0),
+                            vertical: 16.0, horizontal: 16.0),
                         labelStyle: const TextStyle(
                             color: Pallet.primaryColor,
                             fontFamily: 'Poppins',
@@ -73,7 +73,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                     decoration: InputDecoration(
                         labelText: 'Email',
                         contentPadding: EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 8.0),
+                            vertical: 16.0, horizontal: 16.0),
                         labelStyle: const TextStyle(
                             color: Pallet.primaryColor,
                             fontFamily: 'Poppins',
@@ -93,7 +93,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                     decoration: InputDecoration(
                         labelText: 'Password',
                         contentPadding: EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 8.0),
+                            vertical: 16.0, horizontal: 16.0),
                         labelStyle: const TextStyle(
                             color: Pallet.primaryColor,
                             fontFamily: 'Poppins',
@@ -109,7 +109,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                     obscureText: true, // Hides the password
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
+                    padding: const EdgeInsets.only(top: 16.0),
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -122,6 +122,8 @@ class _SignUpScreen extends State<SignUpScreen> {
                               fontWeight: FontWeight.bold),
                         ),
                         style: ButtonStyle(
+                            padding: WidgetStateProperty.all(
+                                EdgeInsets.symmetric(vertical: 16)),
                             backgroundColor:
                                 WidgetStateProperty.all(Pallet.primaryColor),
                             overlayColor: WidgetStateProperty.all(
@@ -140,7 +142,7 @@ class _SignUpScreen extends State<SignUpScreen> {
                     left: 16.0, right: 16.0, bottom: 54.0),
                 child: SizedBox(
                     width: double.infinity,
-                    height: 40,
+                    height: 60,
                     child: InkWell(
                       onLongPress: () {
                         // print("Long Pressed");
@@ -166,45 +168,49 @@ class _SignUpScreen extends State<SignUpScreen> {
                       ),
                     )),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text("Already have an account?"),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) =>
-                            SignInScreen(), // Replace SignUpScreen with the actual class of your sign-up screen
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
-                          var begin = Offset(1.0,
-                              0.0); // Change begin offset for different animations
-                          var end = Offset.zero;
-                          var curve = Curves.ease;
-
-                          var tween = Tween(begin: begin, end: end)
-                              .chain(CurveTween(curve: curve));
-                          var offsetAnimation = animation.drive(tween);
-
-                          return SlideTransition(
-                            position: offsetAnimation,
-                            child: child,
-                          );
-                        },
-                      ));
-                    },
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text("Already have an account?"),
+                    SizedBox(
+                      width: 8,
                     ),
-                  )
-                ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushReplacement(PageRouteBuilder(
+                          pageBuilder: (context, animation,
+                                  secondaryAnimation) =>
+                              SignInScreen(), // Replace SignUpScreen with the actual class of your sign-up screen
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            var begin = Offset(1.0,
+                                0.0); // Change begin offset for different animations
+                            var end = Offset.zero;
+                            var curve = Curves.ease;
+
+                            var tween = Tween(begin: begin, end: end)
+                                .chain(CurveTween(curve: curve));
+                            var offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                              position: offsetAnimation,
+                              child: child,
+                            );
+                          },
+                        ));
+                      },
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline),
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           ),
